@@ -6,7 +6,7 @@ import {useNavigate, useLocation} from "react-router-dom";
 
 const Container = styled.div`  
   flex: 1;
-  background-color: ${({theme}) => theme.Navbar };
+  background: ${({theme}) => theme.navbar };
   color: ${({theme}) => theme.text_primary};
   font-weight: bold;
   font-size: 22px;
@@ -29,20 +29,19 @@ function Navbar() {
         GenAI 
         {
           path[1] === 'post' ? 
-          (
-          <Button 
+          
+          ( <Button 
           onClick={() => navigate('/')}      
           text="Explore posts" 
           leftIcon={<ExploreRounded style={{fontSize:"18px"}} /> }
-          type="secondary"
-          /> ) 
+          type="secondary" /> ) 
           :
-          (
-          <Button 
+          ( <Button 
           onClick={() => navigate('/post')}      
           text="CreatePost" 
           leftIcon={<AddRounded style={{fontSize:"18px"}} /> } /> )
-          }
+
+        }
     </Container>
   );
 };

@@ -15,6 +15,7 @@ const Container = styled.div`
   justify-content: space-between;
   gap: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  
   @media only screen and (max-width: 600px) { 
     padding: 10px 12px;
   }

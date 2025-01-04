@@ -24,6 +24,7 @@ const OutlinedInput = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
+    
     &:focus-within {
     border-color: ${({ theme }) => theme.primary };
     }
@@ -36,6 +37,7 @@ const Input = styled.div`
     border: none;
     background-color: transparent;
     color: ${({theme}) => theme.text_secondary};
+
     &:focus-within {
         outline:none;
     }

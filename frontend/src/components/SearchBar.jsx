@@ -25,7 +25,9 @@ function SearchBar() {
             border: "none",   
             color: "inherit",
             fontSize: "16px"
-        }} />
+          }}
+          placeholder='Search your image here' 
+        />
     </SearchBarContainer>
   )
 }

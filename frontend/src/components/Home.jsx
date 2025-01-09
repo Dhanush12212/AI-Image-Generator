@@ -7,7 +7,7 @@ const Container = styled.div`
   height: 100vh;
   overflow-y: scroll;
   padding: 30px 30px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,6 +67,11 @@ const CardWrapper = styled.div`
 `;
 
 function Home() {
+  const item={
+    photo: 'https://next-images.123rf.com/index/_next/image/?url=https://assets-cdn.123rf.com/index/static/assets/top-section-bg.jpeg&w=384&q=75',
+    prompt: "Photo",
+    author: "Dhanush",
+  }
   return (
     <Container>  
       <Headline>
@@ -75,10 +80,20 @@ function Home() {
       </Headline>
       <SearchBar/>
       <Wrapper> 
-        <CardWrapper>
-          <ImageCard/>
+        <CardWrapper> 
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
+          <ImageCard item={item}  />
         </CardWrapper>
       </Wrapper>
+      <span>┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈</span>
     </Container>
   )
 }

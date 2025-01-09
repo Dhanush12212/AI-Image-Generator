@@ -68,9 +68,14 @@ function ImageCard({item}) {
     <Card>
         <LazyLoadImage 
             width="100%"
-            src='https://next-images.123rf.com/index/_next/image/?url=https://assets-cdn.123rf.com/index/static/assets/top-section-bg.jpeg&w=384&q=75' />
+            style={{borderRadius: "12px"}}
+            src={item?.photo}
+            alt={item?.prompt} 
+        /> 
+
         <HoverOverlay>
-            <Prompt> {item?.propt} </Prompt>
+
+            <Prompt> {item?.prompt} </Prompt>
             <div style={{
                 width: "100%",
                 display: "flex",
@@ -79,7 +84,7 @@ function ImageCard({item}) {
             }}>
                 
             <Author>
-                <Avatar style={{ width: "32px", height: "32px"}} > {item?.author[0]} </Avatar>
+                <Avatar style={{ width: "32px", height: "32px", color: "black"}} > {item?.author[0]} </Avatar>
                 {item?.author} 
             </Author>
             

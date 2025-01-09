@@ -33,11 +33,12 @@
         cursor:not-allowed; `
   }
 
-  ${({ isLoading }) => 
-      isLoading && 
-      ` opacity: 0.4;
-        cursor:not-allowed; `
-  }
+   ${({ isLoading }) =>
+    isLoading &&
+    `
+    opacity: 0.8;
+  cursor: not-allowed;
+`}
 
   ${({ flex }) =>
     flex &&

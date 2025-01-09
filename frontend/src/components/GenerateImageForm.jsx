@@ -13,21 +13,20 @@ const Form = styled.div`
   justify-content: center;
 `;
 
-const Top = styled.div` 
-  margin-top: 22px;
+const Top = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
 `;
 
-const Title = styled.div` 
+const Title = styled.div`
   font-size: 28px;
   font-weight: 500;
   color: ${({ theme }) => theme.text_primary};
 `;
 
 const Desc = styled.div`
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 400;
   color: ${({ theme }) => theme.text_secondary};
 `;
@@ -48,42 +47,73 @@ const Actions = styled.div`
 `;
   
 
-function GenerateImageForm() {
+const GenerateImageForm = ({
+  createPostLoading,
+  setcreatePostLoading,
+  generateImageLoading,
+  setGenerateImageLoading,
+  post,
+  setPost,
+}) => {  
+
+  const generateImage = async () => {
+    setGenerateImageLoading(true); 
+  };
+
+  const createPost = async () => {
+    setcreatePostLoading(true); 
+  };
+
   return (
     <Form>
-        <Top>
-            <Title> Generate Image with Prompt </Title>
-            <Desc>Write your prompt according to the image you want to generate</Desc>
-        </Top>
-        <Body>
-            <TextInput 
-              label="Author"
-              placeholder="Enter your name.."
-            />
-            <TextInput 
-              label="Prompt"
-              placeholder="Write a detailed prompt about the image . ."
-              rows= "8"
-              textArea
-            />
-            <span style={{fontSize: "13px", textAlign: "center"}}> ▸▸▸ You can Post the image to the Community ◂◂◂</span>
-        </Body>
-        <Actions>
-          
-          <ButtonComponent
-              text="Generate Image"
-              leftIcon={<AutoAwesome />} 
-              flex  
-          />
-          <ButtonComponent
-              text="Post Image"
-              leftIcon={<CreateRounded />}
-              type="secondary"
-              flex
-          />
-        </Actions>
+      <Top>
+        <Title>Generate Image with prompt</Title>
+        <Desc>
+          Write your prompt according to the image you want to generate!
+        </Desc>
+      </Top>
+      <Body>
+        <TextInput
+          label="Author"
+          placeholder="Enter your name"
+          name="name"
+          value={post.name}
+          handelChange={(e) => setPost({ ...post, name: e.target.value })}
+        />
+        <TextInput
+          label="Image Prompt"
+          placeholder="Write a detailed prompt about the image"
+          name="prompt"
+          textArea
+          rows="8"
+          value={post.prompt}
+          handelChange={(e) => setPost({ ...post, prompt: e.target.value })}
+        />
+        <span style={{fontSize: "13px", textAlign: "center"}}> ▸▸▸ You can Post the image to the Community ◂◂◂</span>
+      </Body>
+      <Actions>
+        <ButtonComponent
+          text="Generate Image"
+          leftIcon={<AutoAwesome />}
+          flex
+          isLoading={generateImageLoading}
+          isDisabled={post.prompt === ""}
+          onClick={(e) => generateImage()}
+        />
+        <ButtonComponent
+          text="Post Image"
+          leftIcon={<CreateRounded />}
+          type="secondary"
+          flex
+          isDisabled={
+            post.name === "" || post.photo === "" || post.prompt === ""
+          }
+          isLoading={createPostLoading}
+          onClick={() => createPost()}
+        />
+      </Actions>
     </Form>
-  )
-}
+  );
+};
 
 export default GenerateImageForm

@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components' 
-import SearchBar from './SearchBar';
-import ImageCard from './ImageCard';
+import SearchBar from '../components/SearchBar';
+import ImageCard from '../components/ImageCard';
 
-const Container = styled.div`
-  height: 100vh;
+const Container = styled.div` 
   overflow-y: scroll;
   padding: 30px 30px;
   padding-bottom: 40px;

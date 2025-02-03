@@ -27,9 +27,7 @@ const GeneratedImageCard = ({ src, loading }) => {
     <Container>
       {loading ? (
         <>
-          <CircularProgress
-            sx={{ color: "inherit", width: "24px", height: "24px" }}
-          />
+          <CircularProgress color="inherit" height={24} width={24} />
           Generating Your Image . . .
         </>
       ) : src ? (

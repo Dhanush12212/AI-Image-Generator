@@ -3,10 +3,19 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+import PostRouter from "./routes/Posts.js"
+
 const app = express();
-app.use(cors);
+app.use(cors());
 app.use(express.json({limit:"50mb"}));
 app.use(express.urlencoded({extended: true}));
+
+
+app.get("/", async(req,res) => {
+    res.status(200).json({
+        message: "Hello Welcome to the Main page",
+    })
+});
 
 //error handler
 app.use((err,req,res,next)  => {
@@ -19,20 +28,30 @@ app.use((err,req,res,next)  => {
     }); 
 });
 
-app.get("/", async(req,res) => {
-    res.status(200).json({
-        message: "Hello Welcome to the Main page",
+app.use("/api/post", PostRouter)
+
+//function to connect to mongodb
+const connectDB = async() => {
+    mongoose.set("strictQuery", true);
+    await mongoose.connect(process.env.MONGODB_URL)
+    .then(() => console.log("MongoDB Connected"))
+    .catch((err) => {
+        console.log("Failed to Connect to DB");
+        console.error(err);
     })
-});
+}
 
 //function to start server
 const startServer = async () => {
     try {
+        await connectDB();
         app.listen(8080, () => console.log("Server started on port 8080"));
     }
     catch(error) {
-        console.log(error);
+        console.error(error);
     }
 };
+
+
 
 startServer();

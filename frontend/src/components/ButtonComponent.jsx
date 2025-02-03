@@ -35,16 +35,14 @@
 
    ${({ isLoading }) =>
     isLoading &&
-    `
-    opacity: 0.8;
-  cursor: not-allowed;
-`}
+    ` opacity: 0.8;
+      cursor: not-allowed; `
+}
 
   ${({ flex }) =>
     flex &&
-    `
-    flex: 1;
-  `}
+    ` flex: 1; `
+  }
   `;
 
   const ButtonComponent = ({

@@ -22,7 +22,7 @@ const Card = styled.div`
 
     &:nth-child(7n + 1) {
         grid-column: auto/span 2;
-            grid-row: auto/span 2;
+        grid-row: auto/span 2;
     }
 `; 
 

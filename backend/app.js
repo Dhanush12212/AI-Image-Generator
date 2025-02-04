@@ -4,6 +4,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
 import PostRouter from "./routes/Posts.js"
+import generateImageRouter from "./routes/GenerateImage.js";
 
 const app = express();
 app.use(cors());
@@ -29,6 +30,7 @@ app.use((err,req,res,next)  => {
 });
 
 app.use("/api/post", PostRouter)
+app.use("/api/generateImage", generateImageRouter);
 
 //function to connect to mongodb
 const connectDB = async() => {
